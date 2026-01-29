@@ -69,12 +69,28 @@ h1{
 }
 
 .remove{
-  background:none;
+  width:28px;
+  height:28px;
+  border-radius:50%;
+  background:#ff3b3b;
+  color:white;
+  font-weight:900;
+  font-size:1rem;
   border:none;
-  color:#ff3b3b;
-  font-size:1.2rem;
   cursor:pointer;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  transition:transform .15s ease, box-shadow .15s ease;
 }
+
+.remove:hover{
+  transform:scale(1.1);
+  box-shadow:0 6px 18px rgba(255,59,59,.6);
+}
+
 
 .summary{
   margin-top:40px;
@@ -246,5 +262,6 @@ h1{
   }
 
 }
+
 
 
