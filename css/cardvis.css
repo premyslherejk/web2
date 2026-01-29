@@ -147,40 +147,47 @@ h1{
     margin-top:auto;
     transform:translateY(-140px);
   }
+
+  /* PSA info box menší o 25% šířky */
+  #psa-info{
+    max-width:75%;
+    margin-left:auto;
+    margin-right:auto;
+  }
 }
 
+/* =====================
+   MOBILE
+===================== */
 @media(max-width:900px){
 
   body{padding:20px;}
 
-  /* layout */
+  /* layout – stack */
   .product-page{
     display:flex;
     flex-direction:column;
     gap:24px;
   }
 
-  /* 🔥 klíč: přehodíme HLAVNÍ BLOKY */
+  /* info a galerie přehodíme */
   .info{order:1;}
   .gallery{order:2;}
 
-  /* info seřadíme správně */
+  /* všechny položky uvnitř info přeuspořádáme */
+  h1{order:1;}
+  .psa{order:2;}
+  .gallery{order:3;}   /* galerie do info flow? jen vizuálně přes CSS – nebo lépe přes HTML */
+  .badge{order:4;}      /* Skladem */
+  .buy-box{order:5;}    /* cena + tlačítko */
+  .meta{order:6;}       /* Edice */
+  .description{order:7;} /* popis */
+
   .info{
     display:flex;
     flex-direction:column;
     gap:16px;
   }
-
-  h1{order:1;}
-  .psa{order:2;}
-  .badge{order:4;}        /* Skladem */
-  .price{order:5;}
-  .buy-box{order:5;}
-  .meta{order:6;}
-  .description{order:7;}
-
-  /* galerie přesně na 3. pozici */
-  .gallery{order:3;}
 
   /* drobnosti */
   .price{
@@ -191,66 +198,3 @@ h1{
     width:72px;
   }
 }
-
-
-/* =====================
-   PSA INFO BOX
-===================== */
-.psa-info{
-  display:none;
-  margin-top:80px;
-  padding:32px;
-  background:#15151d;
-  border-radius:20px;
-  box-shadow:0 20px 60px rgba(0,0,0,.6);
-}
-
-.psa-info h3{
-  font-size:1.3rem;
-  margin-bottom:12px;
-  color:#6c4cff;
-}
-
-.psa-info p{
-  color:#ccc;
-  line-height:1.7;
-  font-size:.95rem;
-}
-
-/* =====================
-   LIGHTBOX
-===================== */
-.lightbox{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.95);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  opacity:0;
-  pointer-events:none;
-  transition:.3s;
-  z-index:9999;
-}
-
-.lightbox.active{
-  opacity:1;
-  pointer-events:auto;
-}
-
-.lightbox img{
-  max-width:90%;
-  max-height:90%;
-  border-radius:20px;
-}
-
-.arrow,.close{
-  position:absolute;
-  cursor:pointer;
-  font-size:2.5rem;
-}
-
-.arrow.left{left:20px;}
-.arrow.right{right:20px;}
-.close{top:20px;right:30px;}
-
