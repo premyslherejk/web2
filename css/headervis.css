@@ -13,7 +13,7 @@ body {
   color: white;
   overflow-x: hidden;
 
-  /* 💡 padding-top odpovídající výšce headeru */
+  /* 💡 odsazení obsahu pod fixed header */
   padding-top: 64px;
 }
 
