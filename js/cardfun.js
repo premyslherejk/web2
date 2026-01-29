@@ -101,7 +101,7 @@ function addToCart() {
     id: currentCard.id,
     name: currentCard.name,
     price: currentCard.price,
-    image: images[0],
+    image: currentCard.image_url,  // <- tady používáme jen image_url
     psa: currentCard.psa_grade || null
   });
 
@@ -184,3 +184,4 @@ document.addEventListener('keydown', e => {
 
 // ========= START =========
 loadCard();
+
