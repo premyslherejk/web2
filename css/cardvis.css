@@ -149,36 +149,40 @@ h1{
   }
 }
 
-/* =====================
-   MOBILE – NOVÉ POŘADÍ
-===================== */
 @media(max-width:900px){
 
   body{padding:20px;}
 
-  /* zrušíme grid */
+  /* layout */
   .product-page{
     display:flex;
     flex-direction:column;
     gap:24px;
   }
 
-  /* celé info přepneme na flex + order */
+  /* 🔥 klíč: přehodíme HLAVNÍ BLOKY */
+  .info{order:1;}
+  .gallery{order:2;}
+
+  /* info seřadíme správně */
   .info{
     display:flex;
     flex-direction:column;
+    gap:16px;
   }
 
   h1{order:1;}
   .psa{order:2;}
-  .gallery{order:3;}
-  .badge{order:4;}      /* skladem */
+  .badge{order:4;}        /* Skladem */
   .price{order:5;}
-  .buy-box{order:6;}
-  .meta{order:7;}
-  .description{order:8;}
+  .buy-box{order:5;}
+  .meta{order:6;}
+  .description{order:7;}
 
-  /* drobné úpravy pro mobil */
+  /* galerie přesně na 3. pozici */
+  .gallery{order:3;}
+
+  /* drobnosti */
   .price{
     font-size:2rem;
   }
@@ -187,6 +191,7 @@ h1{
     width:72px;
   }
 }
+
 
 /* =====================
    PSA INFO BOX
@@ -248,3 +253,4 @@ h1{
 .arrow.left{left:20px;}
 .arrow.right{right:20px;}
 .close{top:20px;right:30px;}
+
