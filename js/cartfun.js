@@ -24,6 +24,7 @@ function loadCart(){
 
     const div = document.createElement('div');
     div.className = 'cart-item';
+    div.dataset.index = index;
 
     div.innerHTML = `
       <img src="${item.image}" alt="">
@@ -34,26 +35,58 @@ function loadCart(){
         </div>
         <div class="item-price">${item.price} Kč</div>
       </div>
-      <button class="remove" data-index="${index}">✕</button>
+      <button class="remove">✕</button>
     `;
 
     itemsWrap.appendChild(div);
   });
 
   totalEl.textContent = `${total} Kč`;
-
-  document.querySelectorAll('.remove').forEach(btn=>{
-    btn.onclick = () => removeItem(btn.dataset.index);
-  });
 }
 
-// ===== REMOVE =====
-function removeItem(index){
-  const cart = JSON.parse(localStorage.getItem('cart')) || [];
-  cart.splice(index,1);
-  localStorage.setItem('cart', JSON.stringify(cart));
-  loadCart();
-}
+// ===== CONFIRM REMOVE FLOW =====
+itemsWrap.addEventListener('click', e => {
+
+  if(!e.target.classList.contains('remove')) return;
+
+  const card = e.target.closest('.cart-item');
+  const index = Number(card.dataset.index);
+
+  // už otevřený overlay? konec
+  if(card.querySelector('.confirm-overlay')) return;
+
+  const overlay = document.createElement('div');
+  overlay.className = 'confirm-overlay';
+
+  overlay.innerHTML = `
+    <p>Opravdu chcete produkt odstranit z košíku?</p>
+    <div class="confirm-actions">
+      <button class="confirm-yes">Ano</button>
+      <button class="confirm-no">Ne</button>
+    </div>
+  `;
+
+  card.appendChild(overlay);
+
+  // ==== NE ====
+  overlay.querySelector('.confirm-no').onclick = () => {
+    overlay.classList.add('confirm-exit');
+    setTimeout(() => overlay.remove(), 250);
+  };
+
+  // ==== ANO ====
+  overlay.querySelector('.confirm-yes').onclick = () => {
+    card.classList.add('delete-anim');
+
+    setTimeout(() => {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart.splice(index, 1);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      loadCart();
+    }, 450);
+  };
+
+});
 
 // ===== START =====
 loadCart();
