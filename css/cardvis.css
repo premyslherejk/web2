@@ -1,14 +1,5 @@
-
-/* HEADER + MENU stejný jako na homepage */
-header{position:fixed;top:0;left:0;width:100%;height:64px;display:flex;justify-content:space-between;align-items:center;padding:0 24px;z-index:1001;background:rgba(10,10,15,0.6);backdrop-filter:blur(10px);}
-.logo{font-weight:900;font-size:1.8rem;color:#ff3b3b;text-shadow:0 0 20px rgba(255,200,0,0.8);}
-.menu-btn{font-size:1.8rem;cursor:pointer;z-index:1002;position:relative;}
-.menu-overlay{position:fixed;inset:0;background:#0b0b0f;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px;z-index:1000;transform:scale(0);transition:transform 0.4s ease;}
-.menu-overlay.active{transform:scale(1);}
-.menu-overlay a{font-size:2rem;text-decoration:none;color:white;font-weight:600;transition:.3s;}
-.menu-overlay a:hover{color:#ff3b3b;}
-
 *{box-sizing:border-box;margin:0;padding:0;}
+
 body{
   background:#0f0f14;
   color:white;
@@ -16,6 +7,9 @@ body{
   padding:40px;
 }
 
+/* =====================
+   LAYOUT
+===================== */
 .product-page{
   max-width:1200px;
   margin:auto;
@@ -24,7 +18,14 @@ body{
   gap:60px;
 }
 
-/* ====== GALERIE ====== */
+/* =====================
+   GALERIE
+===================== */
+.gallery{
+  display:flex;
+  flex-direction:column;
+}
+
 .main-image{
   width:100%;
   aspect-ratio:3/4;
@@ -60,7 +61,9 @@ body{
   border-color:#ff3b3b;
 }
 
-/* ====== INFO ====== */
+/* =====================
+   INFO
+===================== */
 .info{
   display:flex;
   flex-direction:column;
@@ -99,15 +102,20 @@ body{
   box-shadow:0 10px 30px rgba(108,76,255,.6);
 }
 
+/* TITLE */
 h1{
   font-size:clamp(2rem,4vw,3rem);
   font-weight:900;
   color:#ff3b3b;
 }
 
+/* TEXT */
 .meta{color:#bbb;}
 .description{line-height:1.7;color:#ccc;}
 
+/* =====================
+   BUY BOX
+===================== */
 .buy-box{
   display:flex;
   flex-direction:column;
@@ -131,7 +139,9 @@ h1{
   color:white;
 }
 
-/* ====== DESKTOP ====== */
+/* =====================
+   DESKTOP – BEZE ZMĚN
+===================== */
 @media (min-width:901px){
   .buy-box{
     margin-top:auto;
@@ -139,13 +149,48 @@ h1{
   }
 }
 
-/* ====== MOBILE ====== */
+/* =====================
+   MOBILE – NOVÉ POŘADÍ
+===================== */
 @media(max-width:900px){
+
   body{padding:20px;}
-  .product-page{grid-template-columns:1fr;}
+
+  /* zrušíme grid */
+  .product-page{
+    display:flex;
+    flex-direction:column;
+    gap:24px;
+  }
+
+  /* celé info přepneme na flex + order */
+  .info{
+    display:flex;
+    flex-direction:column;
+  }
+
+  h1{order:1;}
+  .psa{order:2;}
+  .gallery{order:3;}
+  .badge{order:4;}      /* skladem */
+  .price{order:5;}
+  .buy-box{order:6;}
+  .meta{order:7;}
+  .description{order:8;}
+
+  /* drobné úpravy pro mobil */
+  .price{
+    font-size:2rem;
+  }
+
+  .thumbs img{
+    width:72px;
+  }
 }
 
-/* ====== PSA INFO BOX ====== */
+/* =====================
+   PSA INFO BOX
+===================== */
 .psa-info{
   display:none;
   margin-top:80px;
@@ -167,7 +212,9 @@ h1{
   font-size:.95rem;
 }
 
-/* ====== LIGHTBOX ====== */
+/* =====================
+   LIGHTBOX
+===================== */
 .lightbox{
   position:fixed;
   inset:0;
