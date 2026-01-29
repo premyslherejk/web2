@@ -16,13 +16,9 @@
 
   <div class="header-right">
     <div class="cart-icon" onclick="location.href='cart.html'">
-      🛒
-      <span class="cart-count" id="cart-count">0</span>
+      🛒 <span class="cart-count" id="cart-count">0</span>
     </div>
-
-    <button id="menu-button" class="menu-button" aria-label="Menu">
-      ☰
-    </button>
+    <button id="menu-button" class="menu-button">☰</button>
   </div>
 </header>
 
@@ -35,57 +31,37 @@
 
 <div class="product-page">
 
-  <!-- INFO + GALERIE (správné pořadí pro mobil) -->
-  <div class="info">
-
-    <!-- 1️⃣ Název -->
-    <h1 id="name"></h1>
-
-    <!-- 2️⃣ PSA -->
-    <div class="psa" id="psa"></div>
-
-    <!-- 3️⃣ Fotky -->
-    <div class="gallery">
-      <div class="main-image" id="mainImage">
-        <img id="current" src="" alt="">
-      </div>
-      <div class="thumbs" id="thumbs"></div>
+  <!-- GALERIE -->
+  <div class="gallery">
+    <div class="main-image" id="mainImage">
+      <img id="current" src="" alt="">
     </div>
+    <div class="thumbs" id="thumbs"></div>
+  </div>
 
-    <!-- 4️⃣ Skladem -->
+  <!-- INFO -->
+  <div class="info">
+    <h1 id="name"></h1>
+    <div class="psa" id="psa"></div>
     <span class="badge" id="status"></span>
 
-    <!-- 5️⃣ Cena + koupě -->
     <div class="buy-box">
       <div class="price" id="price"></div>
       <button class="add">Přidat do košíku</button>
     </div>
 
-    <!-- 6️⃣ Edice -->
     <div class="meta" id="meta"></div>
-
-    <!-- 7️⃣ Popis -->
     <p class="description" id="description"></p>
-
   </div>
+
 </div>
 
-<!-- PSA INFO -->
 <div id="psa-info" class="psa-info">
   <h3>Co znamená PSA hodnocení?</h3>
-  <p>
-    PSA (Professional Sports Authenticator) je nejuznávanější autorita
-    na světě pro hodnocení sběratelských karet.
-    Karty jsou hodnoceny na stupnici 1–10 podle stavu, centrování,
-    rohů a povrchu.
-  </p>
-  <p>
-    <strong>PSA 9</strong> znamená téměř perfektní stav – ideální
-    pro sběratele i investory.
-  </p>
+  <p>PSA (Professional Sports Authenticator) je nejuznávanější autorita na světě pro hodnocení sběratelských karet.</p>
+  <p><strong>PSA 9</strong> znamená téměř perfektní stav.</p>
 </div>
 
-<!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
   <div class="arrow left" id="prev">‹</div>
   <img id="lightImg">
