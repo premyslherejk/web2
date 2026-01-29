@@ -81,7 +81,7 @@ body{
 
 .hero-content h1{
   font-size:clamp(4rem,8vw,6rem);
-  font-weight:900;
+  font-weight:600;
   color:#ff3b3b;
   text-shadow:0 0 20px rgba(255,200,0,0.9);
 }
@@ -180,3 +180,4 @@ body{
   color:#ccc;
 
 }
+
