@@ -33,40 +33,45 @@
   <a href="contact.html">Kontakt</a>
 </nav>
 
-
 <div class="product-page">
 
-  <!-- GALERIE -->
-  <div class="gallery">
-    <div class="main-image" id="mainImage">
-      <img id="current" src="" alt="">
+  <!-- INFO + GALERIE (správné pořadí pro mobil) -->
+  <div class="info">
+
+    <!-- 1️⃣ Název -->
+    <h1 id="name"></h1>
+
+    <!-- 2️⃣ PSA -->
+    <div class="psa" id="psa"></div>
+
+    <!-- 3️⃣ Fotky -->
+    <div class="gallery">
+      <div class="main-image" id="mainImage">
+        <img id="current" src="" alt="">
+      </div>
+      <div class="thumbs" id="thumbs"></div>
     </div>
 
-    <div class="thumbs" id="thumbs"></div>
-  </div>
-
-  <!-- INFO -->
-  <div class="info">
+    <!-- 4️⃣ Skladem -->
     <span class="badge" id="status"></span>
 
-<h1 id="name"></h1>
-
-<div class="psa" id="psa"></div>
-
-<div class="meta" id="meta"></div>
-
-
-    <p class="description" id="description"></p>
-
+    <!-- 5️⃣ Cena + koupě -->
     <div class="buy-box">
       <div class="price" id="price"></div>
       <button class="add">Přidat do košíku</button>
     </div>
-  </div>
 
+    <!-- 6️⃣ Edice -->
+    <div class="meta" id="meta"></div>
+
+    <!-- 7️⃣ Popis -->
+    <p class="description" id="description"></p>
+
+  </div>
 </div>
 
-  <div id="psa-info" class="psa-info">
+<!-- PSA INFO -->
+<div id="psa-info" class="psa-info">
   <h3>Co znamená PSA hodnocení?</h3>
   <p>
     PSA (Professional Sports Authenticator) je nejuznávanější autorita
@@ -79,7 +84,6 @@
     pro sběratele i investory.
   </p>
 </div>
-
 
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
@@ -94,7 +98,3 @@
 <script src="js/headerfun.js"></script>
 </body>
 </html>
-
-
-
-
