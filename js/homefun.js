@@ -1,18 +1,3 @@
-const menu = document.getElementById('menu');
-const menuBtn = document.getElementById('menu-button');
-
-menuBtn.addEventListener('click', () => {
-  menu.classList.toggle('active'); // přepíná transform scale
-});
-
-// ESC zavře menu
-document.addEventListener('keydown', (e) => {
-  if(e.key === 'Escape'){
-    menu.classList.remove('active');
-  }
-});
-
-
 // SUPABASE
 const supabaseUrl = 'https://hwjbfrhbgeczukcjkmca.supabase.co';
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh3amJmcmhiZ2VjenVrY2prbWNhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk0NDU5MjQsImV4cCI6MjA4NTAyMTkyNH0.BlgIov7kFq2EUW17hLs6o1YujL1i9elD7wILJP6h-lQ';
@@ -50,5 +35,6 @@ async function loadHotOffers(){
     container.appendChild(div);
   });
 }
+
 
 document.addEventListener('DOMContentLoaded', loadHotOffers);
