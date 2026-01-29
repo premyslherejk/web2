@@ -105,12 +105,24 @@ function addToCart() {
     psa: currentCard.psa_grade || null
   });
 
-  updateCartCount();
-
   saveCart(cart);
+
+  // 🔥 Okamžitě aktualizuj header
+  document.dispatchEvent(new Event('cartUpdated'));
+
   syncAddButton();
 }
 
+function removeFromCart(cardId) {
+  let cart = getCart();
+  cart = cart.filter(item => item.id !== cardId);
+  saveCart(cart);
+
+  // 🔥 Okamžitě aktualizuj header
+  document.dispatchEvent(new Event('cartUpdated'));
+}
+
+// Synchronizace tlačítka
 function syncAddButton() {
   const cart = getCart();
   const exists = cart.find(item => item.id === currentCard.id);
@@ -172,4 +184,3 @@ document.addEventListener('keydown', e => {
 
 // ========= START =========
 loadCard();
-
