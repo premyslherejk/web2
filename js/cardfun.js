@@ -105,6 +105,8 @@ function addToCart() {
     psa: currentCard.psa_grade || null
   });
 
+  updateCartCount();
+
   saveCart(cart);
   syncAddButton();
 }
@@ -170,3 +172,4 @@ document.addEventListener('keydown', e => {
 
 // ========= START =========
 loadCard();
+
