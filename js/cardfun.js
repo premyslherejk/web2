@@ -40,12 +40,10 @@ async function loadCard() {
 
   currentCard = card;
 
-  // ===== DATA =====
   nameEl.textContent = card.name || '';
   descEl.textContent = card.description || '';
   priceEl.textContent = `${card.price} Kč`;
   metaEl.textContent = `Edice: ${card.set || '—'} · Stav: ${card.condition || '—'}`;
-
   statusEl.textContent = card.status || 'Skladem';
 
   // ===== PSA =====
@@ -90,39 +88,24 @@ function addToCart() {
   if (!currentCard) return;
 
   const cart = getCart();
-
   const exists = cart.find(item => item.id === currentCard.id);
-  if (exists) {
-    alert('Tahle karta už je v košíku');
-    return;
-  }
+  if (exists) return;
 
   cart.push({
     id: currentCard.id,
     name: currentCard.name,
     price: currentCard.price,
-    image: currentCard.image_url,  // <- tady používáme jen image_url
+    image: currentCard.image_url,
     psa: currentCard.psa_grade || null
   });
 
   saveCart(cart);
-
-  // 🔥 Okamžitě aktualizuj header
   document.dispatchEvent(new Event('cartUpdated'));
 
   syncAddButton();
 }
 
-function removeFromCart(cardId) {
-  let cart = getCart();
-  cart = cart.filter(item => item.id !== cardId);
-  saveCart(cart);
-
-  // 🔥 Okamžitě aktualizuj header
-  document.dispatchEvent(new Event('cartUpdated'));
-}
-
-// Synchronizace tlačítka
+// ========= SYNC TLAČÍTKA =========
 function syncAddButton() {
   const cart = getCart();
   const exists = cart.find(item => item.id === currentCard.id);
@@ -130,9 +113,11 @@ function syncAddButton() {
   if (exists) {
     addBtn.textContent = 'Přidáno ✓';
     addBtn.disabled = true;
+    addBtn.classList.add('added');   // 🔥 TADY JE TA MAGIE
   } else {
     addBtn.textContent = 'Přidat do košíku';
     addBtn.disabled = false;
+    addBtn.classList.remove('added');
   }
 }
 
@@ -184,4 +169,3 @@ document.addEventListener('keydown', e => {
 
 // ========= START =========
 loadCard();
-
