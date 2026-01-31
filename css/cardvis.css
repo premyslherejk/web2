@@ -284,3 +284,8 @@ h1{
   top:20px;
   right:30px;
 }
+
+/* ===================== Buy potvrzení ===================== */
+.add.added{
+  background:linear-gradient(135deg,#2ecc71,#1f8f3a);
+}
